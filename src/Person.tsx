@@ -30,7 +30,7 @@ const Person = (props: Props) => {
         <input type="email" onChange={handleChange}/>
         <p>Marital Status: {props.isMarried ? 'Married':'Unmarried'}</p>
         <p>Birth Place: {props.country}</p>
-        <p>Friends: {props.friends.map((friend)=><p>{friend}</p>)}</p>
+        Friends: {props.friends.map((friend)=><p>{friend}</p>)}
     </div>
   )
 }
