@@ -1,7 +1,10 @@
-function App() {
+import InputField from "./Components/InputField";
+
+const App: React.FC =()=> {
   return (
-    <div className="w-screen h-screen flex flex-col text-center bg-gray-800">
+    <div className="w-screen h-screen flex flex-col text-center bg-red-400">
       <span className="uppercase text-white text-4xl z-10 my-8 md:my-10">Taskyfies</span>
+      <InputField/>
     </div>
   );
 }
