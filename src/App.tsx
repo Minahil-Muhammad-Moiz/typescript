@@ -1,17 +1,7 @@
-import "./App.css";
-import Person, { Country } from "./Person";
-
 function App() {
   return (
-    <div className="App">
-      <Person
-        name="Jackson"
-        age={25}
-        email="ded@ded.com"
-        isMarried={true}
-        country= {Country.Canada}
-        friends={["Jessica", "Jhenny", "Jhonson"]}
-      />
+    <div className="w-screen h-screen flex flex-col text-center bg-gray-800">
+      <span className="uppercase text-white text-4xl z-10 my-8 md:my-10">Taskyfies</span>
     </div>
   );
 }
