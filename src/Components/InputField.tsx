@@ -33,7 +33,7 @@ const InputField: React.FC<Prop> = (props) => {
 
 export default InputField;
 const formClass =
-  "flex justify-center items-center  relative md:w-[80%] w-[60%]";
+  "flex justify-center items-center  relative md:w-[80%] w-[65%]";
 const inputClass =
   "w-full rounded-[50px] px-8 py-5 text-2xl border-none transition-all shadow-inner shadow-black focus:outline-none focus:shadow-[0_0_10px_1000px_rgba(0,0,0,0.3)]";
 const addBtn =
