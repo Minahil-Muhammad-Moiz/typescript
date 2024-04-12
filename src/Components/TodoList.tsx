@@ -9,7 +9,7 @@ interface Prop {
 
 const TodoList: React.FC<Prop> = (props) => {
   return (
-    <div className="flex justify-evenly flex-wrap w-[60%] md:w-[80%] ">
+    <div className="flex justify-evenly flex-wrap w-[60%] md:w-[80%]">
       {props.todos.map((todo) => (
         <SingleTodo todo={todo}  key={todo.id} setTodos={props.setTodos} todos={props.todos}/>
       ))}

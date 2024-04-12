@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Todo } from "../../model";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
-import { MdDone} from "react-icons/md";
+import { MdDone } from "react-icons/md";
 
 type Prop = {
   todo: Todo;
@@ -10,6 +10,9 @@ type Prop = {
 };
 
 const SingleTodo = ({ todo, todos, setTodos }: Prop) => {
+  const [editMode, setEditMode] = useState<boolean>(false);
+  const [editTodo, setEditTodo] = useState<string>(todo.todo);
+
   const deleteTask = (id: number) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
@@ -22,15 +25,36 @@ const SingleTodo = ({ todo, todos, setTodos }: Prop) => {
     );
   };
 
+  const handleEdit = (e:React.FormEvent , id: number)=>{
+    e.preventDefault();
+    setTodos(
+      todos.map((todo)=>(
+        todo.id === id ? {...todo, todo:editTodo}: todo
+      ))
+    );
+    setEditMode(!editMode)
+  }
+
   return (
-    <form className={todoCard}>
-      {todo.isDone ? (
-        <s className={todoCardText}>task</s>
+    <form className={todoCard} onSubmit={(e)=>{
+      handleEdit(e, todo.id)
+    }}>
+      {editMode ? (
+        <input  value={editTodo} onChange={(e)=>{setEditTodo(e.target.value)}} className="focus:outline-none flex-1 text-2xl border-none p-2 w-[80%]"/>
+      ) : todo.isDone ? (
+        <s className={todoCardText}>{todo.todo}</s>
       ) : (
-        <span className={todoCardText}>task</span>
+        <span className={todoCardText}>{todo.todo}</span>
       )}
       <div className="flex ">
-        <span className={icon}>
+        <span
+          className={icon}
+          onClick={() => {
+            if (!editMode && !todo.isDone) {
+              setEditMode(!editMode);
+            }
+          }}
+        >
           <AiFillEdit />
         </span>
         <span
@@ -57,6 +81,6 @@ const SingleTodo = ({ todo, todos, setTodos }: Prop) => {
 export default SingleTodo;
 
 const todoCard =
-  "flex w-full md:w-[40%] items-center justify-evenly p-5 mt-4 md:m-2 rounded-lg bg-cover bg-[url('./Components/Task/bgimg.jpg')] border";
-const todoCardText = "flex-1 p-2 border-none text-left text-2xl";
+  "flex w-full md:w-[47%] h-18 items-center justify-between p-5 mt-4 md:m-2 rounded-lg bg-cover bg-[url('./Components/Task/bgimg.jpg')] ";
+const todoCardText = "flex-1 p-2 border-none text-left text-2xl overflow-hidden";
 const icon = "ml-2 text-2xl cursor-pointer";
