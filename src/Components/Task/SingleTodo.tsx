@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Todo } from "../../model";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { MdDone } from "react-icons/md";
@@ -12,6 +12,10 @@ type Prop = {
 const SingleTodo = ({ todo, todos, setTodos }: Prop) => {
   const [editMode, setEditMode] = useState<boolean>(false);
   const [editTodo, setEditTodo] = useState<string>(todo.todo);
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(()=>{
+    inputRef.current?.focus()}, [editMode])
 
   const deleteTask = (id: number) => {
     setTodos(todos.filter((todo) => todo.id !== id));
@@ -33,6 +37,7 @@ const SingleTodo = ({ todo, todos, setTodos }: Prop) => {
       ))
     );
     setEditMode(!editMode)
+
   }
 
   return (
@@ -40,7 +45,7 @@ const SingleTodo = ({ todo, todos, setTodos }: Prop) => {
       handleEdit(e, todo.id)
     }}>
       {editMode ? (
-        <input  value={editTodo} onChange={(e)=>{setEditTodo(e.target.value)}} className="focus:outline-none flex-1 text-2xl border-none p-2 w-[80%]"/>
+        <input  value={editTodo} onChange={(e)=>{setEditTodo(e.target.value)}} className="focus:outline-none flex-1 text-2xl border-none rounded-md p-2 w-[80%]" ref={inputRef}/>
       ) : todo.isDone ? (
         <s className={todoCardText}>{todo.todo}</s>
       ) : (
@@ -81,6 +86,6 @@ const SingleTodo = ({ todo, todos, setTodos }: Prop) => {
 export default SingleTodo;
 
 const todoCard =
-  "flex w-full md:w-[47%] h-18 items-center justify-between p-5 mt-4 md:m-2 rounded-lg bg-cover bg-[url('./Components/Task/bgimg.jpg')] ";
+  "flex w-full h-18 items-center justify-between p-5 mt-3  rounded-lg bg-cover bg-[url('./Components/Task/bgimg.jpg')] ";
 const todoCardText = "flex-1 p-2 border-none text-left text-2xl overflow-hidden";
-const icon = "ml-2 text-2xl cursor-pointer";
+const icon = "ml-2 text-2xl cursor-pointer ";

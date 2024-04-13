@@ -17,7 +17,7 @@ const App: React.FC =()=> {
 
   return (
     <div className="w-screen h-screen flex flex-col text-center bg-red-400 items-center ">
-      <span className="uppercase text-white text-4xl z-10 my-8 md:my-10">Taskyfies</span>
+      <span className="uppercase text-white text-5xl z-10 my-8 md:my-10">Taskyfies</span>
       <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd}/>
       <TodoList todos={todos} setTodos={setTodos}/>
     </div>
