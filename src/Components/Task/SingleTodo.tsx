@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Todo } from "../../model";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { MdDone } from "react-icons/md";
+import classNames from "classnames";
 
 type Prop = {
   todo: Todo;
@@ -41,7 +42,7 @@ const SingleTodo = ({ todo, todos, setTodos }: Prop) => {
   }
 
   return (
-    <form className={todoCard} onSubmit={(e)=>{
+    <form className={classNames("hover:scale-[1.03] hover:shadow-[0_0_5px_white] ",todoCard)} onSubmit={(e)=>{
       handleEdit(e, todo.id)
     }}>
       {editMode ? (
@@ -86,6 +87,6 @@ const SingleTodo = ({ todo, todos, setTodos }: Prop) => {
 export default SingleTodo;
 
 const todoCard =
-  "flex w-full h-18 items-center justify-between p-5 mt-3  rounded-lg bg-cover bg-[url('./Components/Task/bgimg.jpg')] ";
+  "flex w-full h-18 items-center justify-between p-5 mt-3  rounded-lg bg-cover bg-[url('./Components/Task/bgimg.jpg')] transition-all";
 const todoCardText = "flex-1 p-2 border-none text-left text-2xl overflow-hidden";
 const icon = "ml-2 text-2xl cursor-pointer ";

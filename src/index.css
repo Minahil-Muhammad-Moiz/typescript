@@ -8,5 +8,6 @@
 @layer base {
         html {
                 font-family: "Neucha", cursive;
+                background: rgb(107, 114, 128);
         }
 }

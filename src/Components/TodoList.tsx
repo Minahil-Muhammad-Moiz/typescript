@@ -11,13 +11,13 @@ interface Prop {
 const TodoList: React.FC<Prop> = (props) => {
   return (
     <div className="flex justify-center w-[80%] ">
-      <div className={classNames("bg-teal-600",taskContainers)}>
+      <div className={classNames("bg-cyan-500",taskContainers)}>
         <h1 className={classNames(taskContHeading)}>Active Tasks</h1>
         {props.todos.map((todo) => (
           <SingleTodo todo={todo}  key={todo.id} setTodos={props.setTodos} todos={props.todos}/>
         ))}
       </div>
-      <div className={classNames("bg-lime-600 ",taskContainers)}>
+      <div className={classNames("bg-green-500 ",taskContainers)}>
         <h1 className={classNames(taskContHeading)}>Completed task</h1>
         {props.todos.map((todo) => (
           <SingleTodo todo={todo}  key={todo.id} setTodos={props.setTodos} todos={props.todos}/>
@@ -29,5 +29,5 @@ const TodoList: React.FC<Prop> = (props) => {
 
 export default TodoList;
 
-const taskContainers = "w-full m-1 mt-3 p-2 rounded-lg flex justify-center flex-col items-center";
+const taskContainers = "w-full m-4 p-2 rounded-lg flex justify-center flex-col items-center ";
 const taskContHeading = "text-gray-50 text-4xl";
