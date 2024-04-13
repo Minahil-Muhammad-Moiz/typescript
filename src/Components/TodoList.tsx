@@ -19,9 +19,7 @@ const TodoList: React.FC<Prop> = (props) => {
       </div>
       <div className={classNames("bg-green-500 ",taskContainers)}>
         <h1 className={classNames(taskContHeading)}>Completed task</h1>
-        {props.todos.map((todo) => (
-          <SingleTodo todo={todo}  key={todo.id} setTodos={props.setTodos} todos={props.todos}/>
-        ))}
+        <h5 className="text-2xl text-white bg-red-800 font-extrabold p-4">There's a bug which needs to be solved.</h5>
         </div>
     </div>
   );
